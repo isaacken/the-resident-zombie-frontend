@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Roboto:wght@100;300;400;500;700;900&display=swap&family=ZCOOL+KuaiLe&display=swap');
+
+:root {
+  font-size: 60%;
+
+  --color-background: #0B1828;
+  --color-primary-lighter: #265259;
+  --color-primary-light: #21474D;
+  --color-primary: #1C3C41;
+  --color-primary-dark: #162F33;
+  --color-primary-darker: #102326;
+  --color-secondary: #6F8B71;
+  --color-secondary-dark: #5C735D;
+  --color-text-title: #FFFFFF;
+  --color-text-base: #F0DEC1;
+  --color-text-complement: #D8A881;
+  --color-line: #08121F;
+  --color-input-background: #122842;
+  --color-button-text: #FFFFFF;
+  --color-box-base: #122842;
+  --color-box-footer: #FAFAFC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100vh;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+body,
+input,
+button,
+textarea {
+   font: 500 1.6rem Roboto;
+   color: var(--color-text-base);
+}
+
+.container {
+  width: 90vw;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 700px) {
+  :root {
+    font-size: 62.5%;
+  }
+
+  .container {
+    width: 60vw;
+  }
+}

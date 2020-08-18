@@ -1,0 +1,39 @@
+header h1 {
+  text-align: center;
+}
+
+header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+header > h1 {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  color: var(--color-text-title);
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  margin-left: 1rem;
+  text-shadow: 0.4rem 0.4rem 1rem #000000;
+}
+
+header > #logo-icon {
+  max-width: 5rem;
+}
+
+@media (min-width: 700px) {
+  header {
+    padding: 4rem;
+  }
+
+  header > h1 {
+    font-size: 5rem;
+    margin-left: 1.5rem;
+  }
+
+  header > #logo-icon {
+    max-width: 7rem;
+  }
+}

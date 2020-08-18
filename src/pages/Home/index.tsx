@@ -2,11 +2,20 @@ import React from 'react';
 
 import './styles.css';
 
+import Header from '../../components/Header';
+import { Link, Router } from 'react-router-dom';
+
 function Home() {
   return (
-    <main id="home">
-      
-    </main>
+    <div id="home">
+      <Header />
+      <main className="container">
+        
+      </main>
+      <Link className="new-button" to="/new-survivor">
+        Add survivor
+      </Link>
+    </div>
   );  
 }
 
