@@ -59,10 +59,14 @@ function NewSurvivor() {
   }, []);
 
   useEffect(() => {
-    ipLocation.get(`json.gp?ip=${publicIp.v4()}`).then(function(response) {
-      setLat(Number(response.data.geoplugin_latitude));
-      setLon(Number(response.data.geoplugin_longitude));
-    });
+    async function fetchIpLocation() {
+      await ipLocation.get(`json.gp?ip=${publicIp.v4()}`).then(function(response) {
+        setLat(Number(response.data.geoplugin_latitude));
+        setLon(Number(response.data.geoplugin_longitude));
+      });
+    }
+
+    fetchIpLocation();
   }, [setLat, setLon]);
 
   const handleMapClick = (e: google.maps.MouseEvent) => {
@@ -145,32 +149,32 @@ function NewSurvivor() {
     });
     items = items.substr(0, items.length - 1);
 
-      await api.post('/api/people.json', {
-        person: {
-          name,
-          age: Number(age), 
-          gender,
-          lonlat
-        },
-        items
-      }).then((response) => {
-        if (response.status ===  201) {
-          history.push('/', { message: 'Survivor registered' });
+    await api.post('/api/people.json', {
+      person: {
+        name,
+        age: Number(age), 
+        gender,
+        lonlat
+      },
+      items
+    }).then((response) => {
+      if (response.status ===  201) {
+        history.push('/', { message: 'Survivor registered' });
+      }
+    }).catch((error) => {
+      const errors = Object.entries<ErrorInterface>(error.response.data);        
+
+      errors.forEach((item) => {
+        const alert = {
+          field: item[0],
+          error: item[1][0]
         }
-      }).catch((error) => {
-        const errors = Object.entries<ErrorInterface>(error.response.data);        
 
-        errors.forEach((item) => {
-          const alert = {
-            field: item[0],
-            error: item[1][0]
-          }
-
-          setAlerts([...alerts, alert]);
-        });
-
-        window.scroll({ top: 0, behavior: 'smooth' });
+        setAlerts([...alerts, alert]);
       });
+
+      window.scroll({ top: 0, behavior: 'smooth' });
+    });
   }
 
   return (
@@ -202,7 +206,7 @@ function NewSurvivor() {
             { value: 'M', label: 'Male' },
             { value: 'F', label: 'Female' },
           ]} 
-          value={gender}
+          defaultValue={gender}
           onChange={e => setGender(e.target.value)}
         />
 

@@ -14,7 +14,7 @@ const Input: React.FC<InputProps> = ({ name, label, error, ...rest }) => {
   return (
     <div className="input-block">
       <label htmlFor={name}>{label}</label>
-      <input name={name} {...rest} className={error? 'error-input': ''} />
+      <input id={name} name={name} {...rest} className={error? 'error-input': ''} />
       
       {error && <p className="error-message">{ `${error.field} ${error.error}` }</p>}
     </div>

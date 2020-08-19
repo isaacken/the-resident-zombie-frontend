@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({location}) => {
     <div id="home">
       <Header hasLogo={true}>TRZ</Header>
       <main className="container">
-        { location && 
+        { location?.state?.message && 
           <div className="success-alert">
             {location.state?.message}
           </div> 
