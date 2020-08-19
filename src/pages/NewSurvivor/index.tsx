@@ -17,6 +17,7 @@ import firstAidIcon from '../../assets/images/items/first-aid.svg';
 import ak47Icon from '../../assets/images/items/ak47.svg';
 
 import './styles.css';
+import mapStyles from '../../utils/mapStyles';
 
 export interface InputAlertInterface {
   field: string;
@@ -82,10 +83,11 @@ function NewSurvivor() {
         <GoogleMap
           mapContainerStyle={{ width: '100%', height: '40rem' }}
           center={{ lat: lat, lng: lon }}
-          zoom={0}
           options={{
+            zoom: 10,
             streetViewControl: false,
-            mapTypeControl: false
+            mapTypeControl: false,
+            styles: mapStyles
           }}
           onLoad={onLoad}
           onUnmount={onUnmount}
@@ -178,7 +180,7 @@ function NewSurvivor() {
   }
 
   return (
-    <div id="new-survivor">
+    <div id="new-survivor" className="container">
       <Header>Register survivor</Header>
       <form onSubmit={ handleSubmit }>
         <Input

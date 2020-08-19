@@ -1,4 +1,4 @@
-#new-survivor {
+#update-location {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,20 +17,6 @@
 .location-input p {
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
-}
-
-.inventory {
-  padding: 1.4rem 0rem;
-}
-
-.inventory p {
-  font-size: 1.4rem;
-}
-
-.bag {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 1.4rem;
 }
 
 .submit-container {
@@ -66,8 +52,12 @@
   box-shadow: 0.05rem 0.05rem 0.05rem var(--color-button-shadow);
 }
 
+.survivor-key {
+  margin-bottom: 3rem;
+}
+
 @media (min-width: 700px) {
-  #new-survivor {
+  #update-location {
     width: 50vw;
   }
 

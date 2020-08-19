@@ -1,12 +1,13 @@
 #home {
   height: 100vh;
+  width: 90vw;
 }
 
-.new-button {
-  position: absolute;
-  right: 2rem;
-  bottom: 2rem;
+#home .container {
+  padding-bottom: 5rem;
+}
 
+.button {
   color: var(--color-button-text);
   background-color: var(--color-primary);
   text-decoration: none;
@@ -14,15 +15,26 @@
   border-radius: 2rem;
   font-weight: 500;
   box-shadow: 0.2rem 0.2rem 0.05rem var(--color-button-shadow);
+  display: flex;
+  align-items: center;
+  margin: 1rem 0rem;
 }
 
-.new-button:hover {
+.button:hover {
   background-color: var(--color-primary-dark);
 }
 
-.new-button:active {
-  margin: 0.15rem 0 0 0.15rem;
+.button:active {
   box-shadow: 0.05rem 0.05rem 0.05rem var(--color-button-shadow);
+}
+
+.button .icon {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.button:first {
+  margin-top: 0;
 }
 
 .success-alert {
@@ -33,15 +45,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1rem 0 2rem 0;
+  animation: alertHide 0.05s ease-in 5s forwards;
 }
 
-.close-alert {
-  text-align: center;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 1.2rem;
+.content {
+  display: flex;
+  flex-direction: column;
 }
 
-.close-alert:hover {
-  color: var(--color-text-complement);
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+@keyframes alertHide {  
+  to {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+}
+
+@-webkit-keyframes alertHide {
+  to {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 700px) {
+  .content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    width: 100%;
+  }
+
+  .menu {
+    padding-left: 2rem;
+  }
 }
