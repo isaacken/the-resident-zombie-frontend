@@ -19,8 +19,12 @@ header > h1 {
   text-shadow: 0.4rem 0.4rem 1rem #000000;
 }
 
-header > #logo-icon {
+#logo-icon {
   max-width: 5rem;
+}
+
+#go-back-icon {
+  max-width: 3rem;
 }
 
 @media (min-width: 700px) {

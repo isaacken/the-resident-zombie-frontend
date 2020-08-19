@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Home from '.';
+
 import App from '../../App';
 
-test('display title', () => {
+test('display add survivor button', () => {
   const screen = render(<App />);
-  // const element = screen.getBy...()
-  // expect(element).to...();
+  const addSurvivorButton = screen.getByText(/add survivor/i);
+  expect(addSurvivorButton).toBeVisible();
 });

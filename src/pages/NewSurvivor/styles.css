@@ -1,0 +1,78 @@
+#new-survivor {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-block + .input-block,
+.input-block + .select-block {
+  margin-top: 1.4rem;
+}
+
+.location-input {
+  margin-top: 1.4rem;
+}
+
+.location-input p {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.inventory {
+  padding: 1.4rem 0rem;
+}
+
+.inventory p {
+  font-size: 1.4rem;
+}
+
+.bag {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1.4rem;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0rem 3.4rem;
+}
+
+.submit-button {
+  width: 90vw;
+  align-self: center;
+  color: var(--color-button-text);
+  background-color: var(--color-primary);
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+  border: 0;
+  font-weight: 500;
+  box-shadow: 0.2rem 0.2rem 0.05rem var(--color-button-shadow);
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+.submit-button:active {
+  margin: 0.15rem 0 0 0.15rem;
+  box-shadow: 0.05rem 0.05rem 0.05rem var(--color-button-shadow);
+}
+
+@media (min-width: 700px) {
+  .bag {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 1.4rem;
+  }
+
+  .submit-button {
+    max-width: 25rem;
+  }
+}

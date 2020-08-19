@@ -1,7 +1,47 @@
 #home {
-  min-height: 100vh;
+  height: 100vh;
 }
 
-@media (min-width: 700px) {
-  
+.new-button {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+
+  color: var(--color-button-text);
+  background-color: var(--color-primary);
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  box-shadow: 0.2rem 0.2rem 0.05rem var(--color-button-shadow);
+}
+
+.new-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.new-button:active {
+  margin: 0.15rem 0 0 0.15rem;
+  box-shadow: 0.05rem 0.05rem 0.05rem var(--color-button-shadow);
+}
+
+.success-alert {
+  padding: 2rem 3rem;
+  background-color: var(--color-primary-lighter);
+  border-radius: 1rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-alert {
+  text-align: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.close-alert:hover {
+  color: var(--color-text-complement);
 }
