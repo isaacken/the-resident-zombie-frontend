@@ -19,7 +19,7 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({location}) => { 
-  const [, setMap] = React.useState(null);
+  const [, setMap] = React.useState<google.maps.Map | undefined>();
   const [lat, setLat] = React.useState(0);
   const [lon, setLon] = React.useState(0);
 
@@ -51,7 +51,7 @@ const Home: React.FC<HomeProps> = ({location}) => {
   }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
+    setMap(undefined);
   }, []);
 
   useEffect(() => {

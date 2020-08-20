@@ -26,10 +26,11 @@ interface ErrorInterface {
 function UpdateLocation() {
   const history = useHistory();
 
-  const [, setMap] = React.useState(null);
+  const [map, setMap] = React.useState<google.maps.Map | undefined>();
 
   const [lat, setLat] = React.useState(0);
   const [lon, setLon] = React.useState(0);
+  const [zoom, setZoom] = React.useState(10);
   const [id, setId] = React.useState('');
   const [name, setName] = React.useState('');
   const [age, setAge] = React.useState(0);
@@ -43,7 +44,7 @@ function UpdateLocation() {
   }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
+    setMap(undefined);
   }, []);
 
   const handleMapClick = (e: google.maps.MouseEvent) => {
@@ -60,7 +61,7 @@ function UpdateLocation() {
           mapContainerStyle={{ width: '100%', height: '40rem' }}
           center={{ lat: lat, lng: lon }}
           options={{
-            zoom: 10,
+            zoom,
             streetViewControl: false,
             mapTypeControl: false,
             styles: mapStyles
@@ -68,7 +69,7 @@ function UpdateLocation() {
           onLoad={onLoad}
           onUnmount={onUnmount}
           onClick={handleMapClick}
-          
+          onZoomChanged={() => { setZoom(map?.getZoom() || 0) }}
         >
           <Marker position={{lat: lat, lng: lon}} />
         </GoogleMap>

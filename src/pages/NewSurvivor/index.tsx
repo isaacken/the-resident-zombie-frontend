@@ -34,10 +34,11 @@ interface ErrorInterface {
 function NewSurvivor() {
   const history = useHistory();
 
-  const [, setMap] = React.useState(null);
+  const [map, setMap] = React.useState<google.maps.Map | undefined>();
 
   const [lat, setLat] = React.useState(0);
   const [lon, setLon] = React.useState(0);
+  const [zoom, setZoom] = React.useState(10);
   const [name, setName] = React.useState('');
   const [age, setAge] = React.useState(0);
   const [gender, setGender] = React.useState('');
@@ -56,7 +57,7 @@ function NewSurvivor() {
   }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
+    setMap(undefined);
   }, []);
 
   useEffect(() => {
@@ -84,7 +85,7 @@ function NewSurvivor() {
           mapContainerStyle={{ width: '100%', height: '40rem' }}
           center={{ lat: lat, lng: lon }}
           options={{
-            zoom: 10,
+            zoom,
             streetViewControl: false,
             mapTypeControl: false,
             styles: mapStyles
@@ -92,6 +93,7 @@ function NewSurvivor() {
           onLoad={onLoad}
           onUnmount={onUnmount}
           onClick={handleMapClick}
+          onZoomChanged={() => { setZoom(map?.getZoom() || 0) }}
         >
           <Marker position={{lat: lat, lng: lon}} />
         </GoogleMap>
