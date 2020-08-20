@@ -77,6 +77,10 @@
   }
 }
 
+.map {
+  box-shadow: 0.2rem 0.2rem 0.05rem var(--color-button-shadow);
+}
+
 @media (min-width: 700px) {
   .content {
     display: grid;
