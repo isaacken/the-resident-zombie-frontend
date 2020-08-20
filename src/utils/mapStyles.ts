@@ -46,7 +46,7 @@ const mapStyles: Array<google.maps.MapTypeStyle> = [
       "elementType": "labels.icon",
       "stylers": [
           {
-              "visibility": "off"
+              "visibility": "on"
           }
       ]
   },
