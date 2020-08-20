@@ -40,22 +40,23 @@ function FlagInfected() {
   const [alerts, setAlerts] = React.useState<InputAlertInterface[]>([]);
   const [message, setMessage] = React.useState('');
 
+  const getPeople = async () => {
+    const response = await api.get('api/people.json');
+    const data: Survivor[] = response.data;
+    
+    let peopleAux: Survivor[] = [];
+
+    data.forEach(person => {
+      if (!person.infected) {
+        peopleAux.push(person);
+      }
+    });
+
+    setPeople(peopleAux);
+    return peopleAux;
+  }
+
   useEffect(() => {
-    const getPeople = async () => {
-      const response = await api.get('api/people.json');
-      const data: Survivor[] = response.data;
-      
-      let peopleAux: Survivor[] = [];
-
-      data.forEach(person => {
-        if (!person.infected) {
-          peopleAux.push(person);
-        }
-      });
-
-      setPeople(peopleAux);
-    }
-
     getPeople();
   }, []);
 
@@ -86,7 +87,9 @@ function FlagInfected() {
 
     setUser(data);
     
-    let peopleAux = people?.filter((person) => {
+    let peopleAux = await getPeople();
+
+    peopleAux = peopleAux?.filter((person) => {
       let location = person.location;
       let personId = extractIdFromUrl(location);
       
