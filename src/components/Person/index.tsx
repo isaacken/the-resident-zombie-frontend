@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './styles.css';
+
 export interface Survivor {
   id: string,
   name: string,
