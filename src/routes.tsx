@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import NewSurvivor from './pages/NewSurvivor';
 import UpdateLocation from './pages/UpdateLocation';
 import FlagInfected from './pages/FlagInfected';
+import About from './pages/About';
 
 function Routes() {
   return (
@@ -13,6 +14,7 @@ function Routes() {
       <Route path="/new-survivor" component={ NewSurvivor } />
       <Route path="/update-location" component={ UpdateLocation } />
       <Route path="/flag-infected" component={ FlagInfected } />
+      <Route path="/about" component={ About } />
     </BrowserRouter>
   );
 }

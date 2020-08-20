@@ -92,7 +92,7 @@ const Home: React.FC<HomeProps> = ({location}) => {
               <Icon.Share2 className="icon" /> Trade items
             </Link>
 
-            <Link className="button" to="/">
+            <Link className="button" to="/about">
               <Icon.Info className="icon" /> About
             </Link>
           </div>
