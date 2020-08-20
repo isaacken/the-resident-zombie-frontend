@@ -5,6 +5,13 @@ import { MemoryRouter } from 'react-router-dom';
 
 import NewSurvivor from '.';
 
+test('display header', () => {
+  const screen = render(<NewSurvivor />, {wrapper: MemoryRouter});
+  const label = screen.getByText(/register survivor/i);
+
+  expect(label).toBeVisible();
+});
+
 test('display all text and select inputs', () => {
   const screen = render(<NewSurvivor />, {wrapper: MemoryRouter});
   const nameInput = screen.getByLabelText(/name/i);

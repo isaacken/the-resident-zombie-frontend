@@ -1,0 +1,105 @@
+#flag-infected {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.select-block + .input-block,
+.input-block + .select-block {
+  margin-top: 1.4rem;
+}
+
+.survivor-key {
+  margin-bottom: 1rem;
+}
+
+.no-results {
+  opacity: 0.4;
+  padding: 1rem;
+  text-align: center;
+}
+
+.person {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  margin: 1rem 0;
+}
+
+.person:first-child {
+  margin-top: 0;
+}
+
+.person-name {
+  font-size: 2rem;
+}
+
+.person-details {
+  font-weight: normal;
+}
+
+.flag-infected-button {
+  background: var(--color-primary);
+  border: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  box-shadow: 0.2rem 0.2rem 0.05rem var(--color-button-shadow);
+  cursor: pointer;
+}
+
+.flag-infected-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.flag-infected-button:active {
+  box-shadow: 0.05rem 0.05rem 0.05rem var(--color-button-shadow);
+}
+
+.flag-infected-button:focus {
+  outline: none;
+}
+
+.success-alert, .error-alert {
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 2rem 0;
+  animation: alertHide 0.05s ease-in 5s forwards;
+}
+
+.success-alert {
+  background-color: var(--color-primary-lighter);
+}
+
+.error-alert {
+  background-color: var(--color-error);
+}
+
+@keyframes alertHide {  
+  to {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+}
+
+@-webkit-keyframes alertHide {
+  to {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 700px) {
+  #flag-infected {
+    width: 50vw;
+  }
+}

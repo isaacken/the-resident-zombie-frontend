@@ -4,6 +4,13 @@ import { MemoryRouter } from 'react-router-dom';
 
 import UpdateLocation from '.';
 
+test('display header', () => {
+  const screen = render(<UpdateLocation />, {wrapper: MemoryRouter});
+  const label = screen.getByText(/update location/i);
+
+  expect(label).toBeVisible();
+});
+
 test('display only survivor key input on init', () => {
   const screen = render(<UpdateLocation />, {wrapper: MemoryRouter});
 

@@ -102,20 +102,20 @@ function NewSurvivor() {
   const handleItemQuantityChange = (e: MouseEvent) => {
     const itemIdentifier = e.currentTarget.getAttribute('data-itemidentifier');
     const operation = e.currentTarget.getAttribute('data-operation');
-    const inventoryTemp = inventory.slice();
+    const inventoryAux = inventory.slice();
     const item = inventory.findIndex(e => e.itemIdentifier === itemIdentifier);
 
     if (operation === '+') {
-      inventoryTemp[item].quantity++;
+      inventoryAux[item].quantity++;
     }
 
     if (operation === '-') {
-      if (inventoryTemp[item].quantity > 0) {
-        inventoryTemp[item].quantity--;
+      if (inventoryAux[item].quantity > 0) {
+        inventoryAux[item].quantity--;
       }
     }
 
-    setInventory(inventoryTemp);
+    setInventory(inventoryAux);
   }
 
   const shiftCoordinates = (lat: number, lon: number) => {
