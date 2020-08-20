@@ -1,0 +1,20 @@
+.person {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  margin: 1rem 0;
+}
+
+.person:first-child {
+  margin-top: 0;
+}
+
+.person-name {
+  font-size: 2rem;
+}
+
+.person-details {
+  font-weight: normal;
+}

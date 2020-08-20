@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 
 import './styles.css';
 import extractIdFromUrl from '../../utils/extractIdFromUrl';
+import Person from '../../components/Person';
 
 interface InputAlertInterface {
   field: string;
@@ -190,22 +191,19 @@ function FlagInfected() {
           <div className="people-list">
             { peopleResult? 
                 peopleResult.map((person, key) =>
-                  <div key={key} className="person">
-                    <div className="person-data">
-                      <p className="person-name">{person.name}</p>
-                      <p className="person-details">{person.age}, { person.gender === 'M'? 'Male':'Female' }</p>
-                    </div>                   
-                    <div className="person-actions">
-                      <button 
-                        className="flag-infected-button" 
-                        title="Flag as infected"
-                        data-location={person.location}
-                        onClick={handleFlagButton}
-                      >
-                        <Icon.Flag />
-                      </button>
-                    </div>
-                  </div>
+                  <Person
+                    key={person.location}
+                    person={person}
+                  >
+                    <button 
+                      className="flag-infected-button" 
+                      title="Flag as infected"
+                      data-location={person.location}
+                      onClick={handleFlagButton}
+                    >
+                      <Icon.Flag />
+                    </button>
+                  </Person>
                 ) : 
                 <div className="no-results">
                   No results found
