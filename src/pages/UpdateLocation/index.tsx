@@ -10,6 +10,8 @@ import Input from '../../components/Input';
 import './styles.css';
 import Select from '../../components/Select';
 import mapStyles from '../../utils/mapStyles';
+import ipLocation from '../../services/ipLocation';
+import publicIp from 'public-ip';
 
 export interface InputAlertInterface {
   field: string;
@@ -143,14 +145,21 @@ function UpdateLocation() {
     setAge(data.age);
     setGender(data.gender);
     
-    let lonlat = data.lonlat;
-    let lonAux = lonlat.substr(lonlat.indexOf('(') + 1, lonlat.lastIndexOf(' ') - lonlat.indexOf('(') - 1);
-    lonAux = Number(lonAux);
-    setLon(lonAux);
+    if (data.lonlat) {
+      let lonlat = data.lonlat;
+      let lonAux = lonlat.substr(lonlat.indexOf('(') + 1, lonlat.lastIndexOf(' ') - lonlat.indexOf('(') - 1);
+      lonAux = Number(lonAux);
+      setLon(lonAux);
 
-    let latAux = lonlat.substr(lonlat.lastIndexOf(' ') + 1, lonlat.indexOf(')') - lonlat.lastIndexOf(' ') - 1);
-    latAux = Number(latAux);
-    setTimeout(() => setLat(latAux), 1000);
+      let latAux = lonlat.substr(lonlat.lastIndexOf(' ') + 1, lonlat.indexOf(')') - lonlat.lastIndexOf(' ') - 1);
+      latAux = Number(latAux);
+      setTimeout(() => setLat(latAux), 1000);
+    } else {
+      ipLocation.get(`json.gp?ip=${publicIp.v4()}`).then(function(response) {
+        setLat(Number(response.data.geoplugin_latitude));
+        setLon(Number(response.data.geoplugin_longitude));
+      });
+    }
   }
 
   return (
@@ -167,6 +176,7 @@ function UpdateLocation() {
       </div>
       <form onSubmit={ handleSubmit }>
         {name && <>
+          <p style={{marginBottom: 10}}>Take the opportunity to update your data</p>
           <Input
             name="name"
             label="Name"
