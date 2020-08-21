@@ -8,7 +8,6 @@
 }
 
 .item > p.item-name {
-  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -30,6 +29,7 @@
   font-size: 2rem;
   margin: 1rem 0.5rem 0 0.5rem;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .quantity-buttons > button:not(:disabled):hover {

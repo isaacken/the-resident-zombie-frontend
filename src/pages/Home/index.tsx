@@ -88,7 +88,7 @@ const Home: React.FC<HomeProps> = ({location}) => {
             <Link className="button" to="/flag-infected">
               <Icon.Flag className="icon" /> Flag infected
             </Link>
-            <Link className="button" to="/">
+            <Link className="button" to="/trade-items">
               <Icon.Share2 className="icon" /> Trade items
             </Link>
             <Link className="button" to="/">

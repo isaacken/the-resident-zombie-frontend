@@ -1,0 +1,55 @@
+#trade-items {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.trade-details .trade-pick, .trade-details .trade-offer {
+  padding: 1rem;
+  border: 1px solid var(--color-line);
+  margin: 2rem 0;
+}
+
+.trade-greetings {
+  font-size: 2rem;
+}
+
+.trade-description {
+  display: flex; 
+  justify-content: space-between;
+}
+
+.trade-title {
+  font-weight: normal;
+  padding-right: 1.5rem;
+}
+
+.trade-total {
+  min-width: 12rem;
+  text-align: right;
+}
+
+.trade-items-list {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.4rem;
+}
+
+.trade-note {
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: 1rem 0 3rem;
+  font-style: italic;
+}
+
+@media (min-width: 700px) {
+  #trade-items {
+    width: 50vw;
+  }
+
+  .trade-items-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
