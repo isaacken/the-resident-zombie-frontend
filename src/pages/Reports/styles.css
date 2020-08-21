@@ -1,0 +1,74 @@
+#reports {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+.reports {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.report {
+  padding: 2rem;
+  border: 1px solid var(--color-line);
+}
+
+.report:last-child {
+  margin-bottom: 3rem;
+}
+
+.report-description {
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+.infections-report-chart {
+  margin: 3rem auto 0;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0.5rem 0;
+}
+
+.people-inventory-report-chart {
+  margin-right: 2rem;
+}
+
+.lost-points {
+  padding: 3rem;
+  text-align: center;
+  font-size: 12rem;
+}
+
+.points {
+  font-size: 7rem;
+  font-weight: 100;
+  vertical-align: middle;
+  margin-right: -1rem;
+}
+
+@media (min-width: 700px) {
+  .reports {
+    grid-template: 1fr 1fr
+  }
+
+  .report {
+    grid-column: span 1
+  }
+  
+  .people-inventory-report {
+    grid-column: span 2
+  }
+
+  .chart-container {
+    flex-direction: row;
+  }
+}
+

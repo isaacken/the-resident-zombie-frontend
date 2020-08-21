@@ -135,7 +135,7 @@ const Home: React.FC<HomeProps> = ({location}) => {
             <Link className="button" to="/trade-items">
               <Icon.Share2 className="icon" /> Trade items
             </Link>
-            <Link className="button" to="/">
+            <Link className="button" to="/reports">
               <Icon.BarChart2 className="icon" /> Reports
             </Link>
             <Link className="button" to="/about">

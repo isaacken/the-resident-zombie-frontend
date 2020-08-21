@@ -6,6 +6,7 @@ import NewSurvivor from './pages/NewSurvivor';
 import UpdateLocation from './pages/UpdateLocation';
 import FlagInfected from './pages/FlagInfected';
 import TradeItems from './pages/TradeItems';
+import Reports from './pages/Reports';
 import About from './pages/About';
 
 function Routes() {
@@ -16,6 +17,7 @@ function Routes() {
       <Route path="/update-location" component={ UpdateLocation } />
       <Route path="/flag-infected" component={ FlagInfected } />
       <Route path="/trade-items" component={ TradeItems } />
+      <Route path="/reports" component={ Reports } />
       <Route path="/about" component={ About } />
     </BrowserRouter>
   );
