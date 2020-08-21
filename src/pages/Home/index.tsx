@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
+import publicIp from 'public-ip';
 import * as Icon from 'react-feather';
 
 import Header from '../../components/Header';
 
-import './styles.css';
-import { LoadScript, GoogleMap } from '@react-google-maps/api';
 import ipLocation from '../../services/ipLocation';
-import publicIp from 'public-ip';
 import mapStyles from '../../utils/mapStyles';
+import { Survivor } from '../../components/Person';
+import api from '../../services/api';
+
+import survivorIcon from '../../assets/images/survivor.png';
+import zombieIcon from '../../assets/images/zombie.png';
+
+import './styles.css';
 
 interface HomeProps {
   location?: {
@@ -22,6 +28,7 @@ const Home: React.FC<HomeProps> = ({location}) => {
   const [, setMap] = React.useState<google.maps.Map | undefined>();
   const [lat, setLat] = React.useState(0);
   const [lon, setLon] = React.useState(0);
+  const [people, setPeople] = React.useState<Survivor[]>();
 
   const renderMap = () => {
     return (
@@ -39,7 +46,30 @@ const Home: React.FC<HomeProps> = ({location}) => {
           }}
           onLoad={onLoad}
           onUnmount={onUnmount}
-        />
+        >
+          {people?.map((person, key) => {
+            let lonAux = Number(person.lonlat.substr(person.lonlat.indexOf('(') + 1, person.lonlat.lastIndexOf(' ') - person.lonlat.indexOf('(') - 1));      
+            let latAux = Number(person.lonlat.substr(person.lonlat.lastIndexOf(' ') + 1, person.lonlat.indexOf(')') - person.lonlat.lastIndexOf(' ') - 1));
+
+            return (
+              <Marker 
+                key={key}
+                position={{lat: latAux, lng: lonAux}} 
+                title={person.name}
+                label={{
+                  text: person.name,
+                  color: '#FFF',
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                }}
+                icon={{
+                  url: person.infected? zombieIcon : survivorIcon,
+                }}
+              />
+            );
+          }
+          )}
+        </GoogleMap>
       </LoadScript>
     );
   }
@@ -62,7 +92,21 @@ const Home: React.FC<HomeProps> = ({location}) => {
       });
     }
 
+    async function getPeople () {
+      const response = await api.get('api/people.json');
+      const data: Survivor[] = response.data;
+      
+      let peopleAux: Survivor[] = [];
+  
+      data.forEach(person => {
+        peopleAux.push(person);
+      });
+  
+      setPeople(peopleAux);
+    }
+
     fetchIpLocation();
+    getPeople();
   }, [setLat, setLon]);
 
   return (
