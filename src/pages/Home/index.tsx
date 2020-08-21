@@ -48,6 +48,10 @@ const Home: React.FC<HomeProps> = ({location}) => {
           onUnmount={onUnmount}
         >
           {people?.map((person, key) => {
+            if (!person.lonlat) {
+              return;
+            }
+
             let lonAux = Number(person.lonlat.substr(person.lonlat.indexOf('(') + 1, person.lonlat.lastIndexOf(' ') - person.lonlat.indexOf('(') - 1));      
             let latAux = Number(person.lonlat.substr(person.lonlat.lastIndexOf(' ') + 1, person.lonlat.indexOf(')') - person.lonlat.lastIndexOf(' ') - 1));
 
@@ -55,12 +59,12 @@ const Home: React.FC<HomeProps> = ({location}) => {
               <Marker 
                 key={key}
                 position={{lat: latAux, lng: lonAux}} 
-                title={person.name}
+                title={`${person.name}, ${person.age} (${person.gender==='M'? 'Male':'Female'})`}
                 label={{
                   text: person.name,
                   color: '#FFF',
                   fontWeight: 'bold',
-                  fontSize: '1rem',
+                  fontSize: '1rem'
                 }}
                 icon={{
                   url: person.infected? zombieIcon : survivorIcon,
