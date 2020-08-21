@@ -2,15 +2,17 @@ import React, { MouseEvent } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import SelectableItem from '.';
+import TradeItem from '.';
 
 import fijiWaterIcon from '../../assets/images/items/fiji-water.svg';
 
 test('display item name', () => {
-  const element = render(<SelectableItem
+  const element = render(<TradeItem
     itemName="Fiji Water"
     itemIdentifier="fiji_water"
     quantity={0}
+    quantitySelected={0}
+    points={14}
     icon={fijiWaterIcon}
   />);
   
@@ -20,10 +22,12 @@ test('display item name', () => {
 });
 
 test('display item icon', () => {
-  const element = render(<SelectableItem
+  const element = render(<TradeItem
     itemName="Fiji Water"
     itemIdentifier="fiji_water"
     quantity={0}
+    quantitySelected={0}
+    points={14}
     icon={fijiWaterIcon}
   />);
 
@@ -33,14 +37,16 @@ test('display item icon', () => {
 });
 
 test('display the right quantity', () => {
-  const element = render(<SelectableItem
+  const element = render(<TradeItem
     itemName="Fiji Water"
     itemIdentifier="fiji_water"
     quantity={10}
+    quantitySelected={2}
+    points={14}
     icon={fijiWaterIcon}
   />);
 
-  const label = element.getByText(/quantity: 10/i);
+  const label = element.getByText(/2 \/ 10/i);
 
   expect(label).toBeInTheDocument();
 });
@@ -52,15 +58,17 @@ test('fire event when click on plus', () => {
     operation = e.currentTarget.getAttribute('data-operation');
   }
 
-  const element = render(<SelectableItem
+  const element = render(<TradeItem
     itemName="Fiji Water"
     itemIdentifier="fiji_water"
     quantity={10}
+    quantitySelected={2}
+    points={14}
     icon={fijiWaterIcon}
     onClick={handleClick}
   />);
 
-  userEvent.click(element.getByText(/\+/));
+  userEvent.click(element.getByTestId('add-item'));
   expect(operation).toBe('+');
 });
 
@@ -70,15 +78,17 @@ test('fire event when click on minus', () => {
     operation = e.currentTarget.getAttribute('data-operation');
   }
 
-  const element = render(<SelectableItem
+  const element = render(<TradeItem
     itemName="Fiji Water"
     itemIdentifier="fiji_water"
     quantity={10}
+    quantitySelected={2}
+    points={14}
     icon={fijiWaterIcon}
     onClick={handleClick}
   />);
 
-  userEvent.click(element.getByText(/-/));
+  userEvent.click(element.getByTestId('remove-item'));
   expect(operation).toBe('-');
 });
 

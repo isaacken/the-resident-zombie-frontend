@@ -34,6 +34,7 @@ const TradeItem: React.FC<TradeItemProps> = ({itemIdentifier, itemName, quantity
             className="trade-item-button"
             data-itemidentifier={itemIdentifier}
             data-operation="+"
+            data-testid="add-item"
             onClick={onClick}
           >
             <Icon.ChevronUp className="icon" />
@@ -49,6 +50,7 @@ const TradeItem: React.FC<TradeItemProps> = ({itemIdentifier, itemName, quantity
             className="trade-item-button"
             data-itemidentifier={itemIdentifier}
             data-operation="-"
+            data-testid="remove-item"
             onClick={onClick}
           >
             <Icon.ChevronDown className="icon" />
